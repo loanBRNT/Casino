@@ -220,9 +220,27 @@ if __name__ == "__main__":
                 print_usage_help()
     else:
         t = 1
-        agent.roulette.etat = "MISAGE"
+        #while (not is_interrupted) and igs.is_started() and agent.roulette.etat == "ATTENTE":
+
+
         while (not is_interrupted) and igs.is_started():
             time.sleep(1)
+            if agent.roulette.etat == "ATTENTE":
+                igs.service_call("Whiteboard", "clear", None, "")
+
+                arg = ("https://raw.githubusercontent.com/loanBRNT/Casino/main/wheel.png", 0, 0)
+                id_roulette = igs.service_call("Whiteboard", "addImageFromUrl", arg, "")
+
+                if id_roulette == -1:
+                    continue
+
+                #arg = (id_roulette, "width",400 )
+                #igs.service_call("Whiteboard","setDoubleProperty", arg, "")
+
+                #arg = (id_roulette, "height", 400)
+                #igs.service_call("Whiteboard", "setDoubleProperty", arg, "")
+
+                agent.roulette.etat = "MISAGE"
             if agent.roulette.etat == "MISAGE":
                 t = agent.roulette.majTimerRoulette()
                 if t % 5 == 0:
