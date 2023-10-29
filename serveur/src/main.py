@@ -107,17 +107,6 @@ def on_freeze_callback(is_frozen, my_data):
         print(traceback.format_exc())
 
 
-# inputs
-def test_input_callback(iop_type, name, value_type, value, my_data):
-    try:
-        agent_object = my_data
-        assert isinstance(agent_object, Serveur)
-        agent_object.testI = value
-        # add code here if needed
-    except:
-        print(traceback.format_exc())
-
-
 # services
 def Miser_callback(sender_agent_name, sender_agent_uuid, service_name, tuple_args, token, my_data):
     try:
@@ -126,6 +115,8 @@ def Miser_callback(sender_agent_name, sender_agent_uuid, service_name, tuple_arg
         montant = tuple_args[0]
         couleur = tuple_args[1]
         agent_object.Miser(sender_agent_name, sender_agent_uuid, montant, couleur)
+        s = sender_agent_name + " a misé " + str(montant) + " sur " + str(couleur)
+        igs.service_call("Whiteboard", "chat", s, "")
     except:
         print(traceback.format_exc())
 
@@ -189,17 +180,12 @@ if __name__ == "__main__":
                 print_usage()
             exit(1)
 
-    agent = Serveur(30)
+    agent = Serveur(20)
 
     igs.observe_agent_events(on_agent_event_callback, agent)
     igs.observe_freeze(on_freeze_callback, agent)
 
-    igs.input_create("test", igs.STRING_T, None)
-
-    igs.output_create("gain", igs.INTEGER_T, None)
-    igs.output_create("timer", igs.INTEGER_T, None)
-
-    igs.observe_input("test", test_input_callback, agent)
+    igs.output_create("title", igs.STRING_T, None)
 
 
     igs.service_init("Miser", Miser_callback, agent)
@@ -241,14 +227,16 @@ if __name__ == "__main__":
                 #igs.service_call("Whiteboard", "setDoubleProperty", arg, "")
 
                 agent.roulette.etat = "MISAGE"
+                agent.titleO = "Faites vos jeux"
+
             if agent.roulette.etat == "MISAGE":
-                t = agent.roulette.majTimerRoulette()
-                if t % 5 == 0:
-                    igs.output_set_int("timer", t)
-                if t == 0:
+                if agent.majTimerRoulette():
+                    agent.titleO = "Les jeux sont faits"
                     n=agent.roulette.lancerAnimationRoulette()
-                    igs.output_set_int("timer", n)
+                    igs.service_call("Whiteboard", "chat", "Le numéro gagnant est le " + str(n), "")
+                    agent.checkWinner()
                     time.sleep(3)
+                    agent.titleO = "Faites vos jeux"
                     agent.roulette.relancerPartie(20)
 
     if igs.is_started():

@@ -7,13 +7,13 @@ class Casino:
     num = None  # Num sorti
     miseInGame = []
     timer = 0
-    etat= "ATTENTE" #   ATTENTE | MISAGE | EN COURS
+    etat = "ATTENTE"  # ATTENTE | MISAGE | EN COURS
 
     histo = []  # Historique des derniers tirages
     lastWinner = {'pseudo': "XXX", 'gain': 0}  # Stocke les informations du dernier plus gros gagnant du coup
     bigWinner = {'pseudo': "XXX", 'gain': 0}  # Stocke les informations du plus gros gagnant de la session
 
-    def __init__(self,valTimer):
+    def __init__(self, valTimer):
         self.timer = valTimer
 
     def tirerUneCase(self):
@@ -29,12 +29,22 @@ class Casino:
         gagnants = []
         for mise in self.miseInGame:
             if mise.isWin(self.num):
-                gagnants.append(Mise)
+
+                if self.lastWinner['gain'] < mise.montant:
+                    self.lastWinner['gain'] = mise.montant
+                    self.lastWinner['pseudo'] = mise.pseudo
+
+                if self.bigWinner['gain'] < mise.montant:
+                    self.bigWinner['gain'] = mise.montant
+                    self.bigWinner['pseudo'] = mise.pseudo
+
+                gagnants.append(mise)
         return gagnants
 
-    def relancerPartie(self,valeur):
+    def relancerPartie(self, valeur):
         self.etat = "MISAGE"
         self.timer = valeur
+        self.miseInGame.clear()
 
     def majTimerRoulette(self):
         self.timer -= 1
@@ -42,5 +52,5 @@ class Casino:
 
     def lancerAnimationRoulette(self):
         self.etat = "EN COURS"
-        time.sleep(3) #Peut etre remplacer avec un Thread apres
+        time.sleep(3)  # Peut-être remplacer avec un Thread apres
         return self.tirerUneCase()
