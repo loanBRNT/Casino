@@ -40,9 +40,9 @@ class Serveur(metaclass=Singleton):
             igs.output_set_string("title", self._titleO)
 
     # services
-    def Miser(self, sender_agent_name, sender_agent_uuid, montant, couleur):
-        print(sender_agent_name, " a misé ", montant, " sur ", couleur)
-        self.roulette.ajouterUneMise(sender_agent_name, montant, couleur)
+    def Miser(self, sender_agent_name, sender_agent_uuid, montant, cible):
+        print(sender_agent_name, " a misé ", montant, " sur ", cible)
+        self.roulette.ajouterUneMise(sender_agent_name, montant, cible)
 
     def majTimerRoulette(self):
         t = self.roulette.majTimerRoulette()
@@ -50,7 +50,7 @@ class Serveur(metaclass=Singleton):
         if t == 0:
             return True
         if t % 5 == 0:
-            s = "Prochain lancé dans " + str(t) + "secondes"
+            s = "Prochain lancé dans " + str(t) + " secondes"
             print(s)
             igs.service_call("Whiteboard", "chat", s, "")
         return False

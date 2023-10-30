@@ -490,7 +490,7 @@
                     "isCollapsed": false,
                     "positionX": 597,
                     "positionY": 325,
-                    "positionZ": 1.3900000000000003,
+                    "positionZ": 1.6900000000000006,
                     "width": 252
                 }
             },
@@ -507,11 +507,6 @@
                     "outputs": [
                         {
                             "description": "",
-                            "name": "timer",
-                            "type": "INTEGER"
-                        },
-                        {
-                            "description": "",
                             "name": "title",
                             "type": "STRING"
                         }
@@ -526,7 +521,7 @@
                                     "type": "DOUBLE"
                                 },
                                 {
-                                    "name": "couleur",
+                                    "name": "cible",
                                     "type": "STRING"
                                 }
                             ],
@@ -547,14 +542,20 @@
                 "view": {
                     "height": 40,
                     "isCollapsed": false,
-                    "positionX": 148,
-                    "positionY": 331,
-                    "positionZ": 1.6600000000000006,
+                    "positionX": 230,
+                    "positionY": 351,
+                    "positionZ": 1.7600000000000007,
                     "width": 252
                 }
             }
         ],
         "mappings": [
+            {
+                "fromAgent": "ddb3aaaf-d5b7-4571-9765-ecf913e50d85",
+                "fromInput": "wildcard",
+                "toAgent": "Whiteboard",
+                "toOutput": "ui_error"
+            },
             {
                 "fromAgent": "Whiteboard",
                 "fromInput": "title",
@@ -571,10 +572,10 @@
                 "data": {
                     "arguments": [
                         {
-                            "montant": "5"
+                            "montant": "2"
                         },
                         {
-                            "couleur": "noir"
+                            "cible": "pair"
                         }
                     ],
                     "selectedAgent": "serveur",
@@ -605,10 +606,10 @@
                 ],
                 "view": {
                     "height": 48,
-                    "isCollapsed": false,
-                    "positionX": 130,
-                    "positionY": 81,
-                    "positionZ": 1.6700000000000006,
+                    "isCollapsed": true,
+                    "positionX": 146,
+                    "positionY": 91,
+                    "positionZ": 1.7700000000000007,
                     "width": 246
                 }
             },
@@ -731,6 +732,41 @@
                     "positionY": 492,
                     "positionZ": 1.5800000000000005,
                     "width": 246
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "7fc274c8-b06e-429b-9d09-d14878381016",
+                    "inputs": [
+                        {
+                            "description": "",
+                            "name": "wildcard",
+                            "type": "WILDCARD_SINGLE_MAPPING"
+                        }
+                    ],
+                    "isDynamic": false,
+                    "name": "",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": ""
+                },
+                "identity": "ddb3aaaf-d5b7-4571-9765-ecf913e50d85",
+                "instances": [
+                ],
+                "view": {
+                    "height": 46,
+                    "isCollapsed": false,
+                    "positionX": 893.1712184873951,
+                    "positionY": 489.04989495798327,
+                    "positionZ": 1.7000000000000006,
+                    "width": 180
                 }
             }
         ]

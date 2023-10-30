@@ -12,11 +12,42 @@ class Mise:
         self.pseudo = pseudo
         self.montant = montant
         print(regle)
-        self.regle['couleur'] = regle
+        if regle == "rouge" or regle == "noir":
+            self.regle['couleur'] = regle
+        elif regle == "pair" or regle == "impair":
+            self.regle['parite'] = regle
+        elif regle == "1-12" or regle == "13-24" or regle == "25-36":
+            self.regle['tranche'] = regle
+        else:
+            self.regle['numero'] = regle
 
     def isWin(self, num):
-        if self.regle['couleur'] != 'None':
+        if 'couleur' in self.regle:
             if num in COULEUR[self.regle['couleur']]:
                 self.montant = self.montant * 2
                 return True
+        elif 'parite' in self.regle:
+            if num % 2 == 0 and self.regle['parite'] == "pair":
+                self.montant = self.montant * 2
+                return True
+            elif num % 2 != 0 and self.regle['parite'] == "impair":
+                self.montant = self.montant * 2
+                return True
+        elif 'tranche' in self.regle:
+            if num < 13 and self.regle['tranche'] == "1-13":
+                self.montant = self.montant * 3
+                return True
+            elif 12 < num < 25 and self.regle['tranche'] == "13-24":
+                self.montant = self.montant * 3
+                return True
+            elif 24 < num and self.regle['tranche'] == "25-36":
+                self.montant = self.montant * 3
+                return True
+        elif 'numero' in self.regle:
+            try:
+                if num == int(self.regle['numero']):
+                    self.montant = self.montant * 36
+                    return True
+            finally:
+                return False
         return False

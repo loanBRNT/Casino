@@ -113,9 +113,9 @@ def Miser_callback(sender_agent_name, sender_agent_uuid, service_name, tuple_arg
         agent_object = my_data
         assert isinstance(agent_object, Serveur)
         montant = tuple_args[0]
-        couleur = tuple_args[1]
-        agent_object.Miser(sender_agent_name, sender_agent_uuid, montant, couleur)
-        s = sender_agent_name + " a misé " + str(montant) + " sur " + str(couleur)
+        cible = tuple_args[1]
+        agent_object.Miser(sender_agent_name, sender_agent_uuid, montant, cible)
+        s = sender_agent_name + " a misé " + str(montant) + " sur " + str(cible)
         igs.service_call("Whiteboard", "chat", s, "")
     except:
         print(traceback.format_exc())
@@ -190,7 +190,7 @@ if __name__ == "__main__":
 
     igs.service_init("Miser", Miser_callback, agent)
     igs.service_arg_add("Miser", "montant", igs.DOUBLE_T)
-    igs.service_arg_add("Miser", "couleur", igs.STRING_T)
+    igs.service_arg_add("Miser", "cible", igs.STRING_T)
 
     igs.start_with_device(device, port)
     # catch SIGINT handler after starting agent
@@ -233,6 +233,7 @@ if __name__ == "__main__":
                 if agent.majTimerRoulette():
                     agent.titleO = "Les jeux sont faits"
                     n=agent.roulette.lancerAnimationRoulette()
+                    agent.titleO = "Le numéro gagnant est " + str(n) + " !"
                     igs.service_call("Whiteboard", "chat", "Le numéro gagnant est le " + str(n), "")
                     agent.checkWinner()
                     time.sleep(3)
