@@ -18,6 +18,8 @@ import sys
 
 from serveur import *
 
+global id_textLastGagnant, id_textBigGagnant, id_roulette
+
 port = 5670
 agent_name = "serveur"
 device = None
@@ -45,6 +47,7 @@ def print_usage_help():
     print("	/quit : quits the agent")
     print("	/help : displays this message")
 
+
 def return_iop_value_type_as_str(value_type):
     if value_type == igs.INTEGER_T:
         return "Integer"
@@ -60,6 +63,7 @@ def return_iop_value_type_as_str(value_type):
         return "Data"
     else:
         return "Unknown"
+
 
 def return_event_type_as_str(event_type):
     if event_type == igs.PEER_ENTERED:
@@ -82,6 +86,7 @@ def return_event_type_as_str(event_type):
         return "AGENT_LOST_ELECTION"
     else:
         return "UNKNOWN"
+
 
 def signal_handler(signal_received, frame):
     global is_interrupted
@@ -117,6 +122,25 @@ def Miser_callback(sender_agent_name, sender_agent_uuid, service_name, tuple_arg
         agent_object.Miser(sender_agent_name, sender_agent_uuid, montant, cible)
         s = sender_agent_name + " a misé " + str(montant) + " sur " + str(cible)
         igs.service_call("Whiteboard", "chat", s, "")
+        igs.service_call(sender_agent_name, "Mise effectue", True, "")
+    except:
+        print(traceback.format_exc())
+
+
+def Element_Create_callback(sender_agent_name, sender_agent_uuid, service_name, tuple_args, token, my_data):
+    try:
+        global id_textLastGagnant, id_roulette, id_textBigGagnant
+        agent_object = my_data
+        assert isinstance(agent_object, Serveur)
+        '''
+        id = tuple_args[0]
+        if id_roulette == -1:
+            id_roulette = id
+        elif id_textLastGagnant == -1:
+            id_textLastGagnant = id
+        elif id_textBigGagnant == -1:
+            id_textBigGagnant = id
+        '''
     except:
         print(traceback.format_exc())
 
@@ -168,7 +192,8 @@ if __name__ == "__main__":
                 device = list_devices[1]
             else:
                 device = list_devices[0]
-            print("using %s as de fault network device (this is the only one available that is not the loopback)" % str(device))
+            print("using %s as de fault network device (this is the only one available that is not the loopback)" % str(
+                device))
         else:
             if len(list_devices) == 0:
                 igs.error("No network device found: aborting.")
@@ -187,8 +212,9 @@ if __name__ == "__main__":
 
     igs.output_create("title", igs.STRING_T, None)
 
-
     igs.service_init("Miser", Miser_callback, agent)
+    igs.service_init("elementCreated", Element_Create_callback, agent)
+    igs.service_arg_add("elementCreated", "elementId", igs.INTEGER_T)
     igs.service_arg_add("Miser", "montant", igs.DOUBLE_T)
     igs.service_arg_add("Miser", "cible", igs.STRING_T)
 
@@ -206,25 +232,32 @@ if __name__ == "__main__":
                 print_usage_help()
     else:
         t = 1
-        #while (not is_interrupted) and igs.is_started() and agent.roulette.etat == "ATTENTE":
+        # while (not is_interrupted) and igs.is_started() and agent.roulette.etat == "ATTENTE":
 
+        id_textLastGagnant, id_textBigGagnant, id_roulette = 1, 2, -1
 
         while (not is_interrupted) and igs.is_started():
             time.sleep(1)
             if agent.roulette.etat == "ATTENTE":
                 igs.service_call("Whiteboard", "clear", None, "")
 
-                arg = ("https://raw.githubusercontent.com/loanBRNT/Casino/main/wheel.png", 0, 0)
+                arg = ("https://raw.githubusercontent.com/loanBRNT/Casino/main/wheel.png", 0.0, 0.0)
                 id_roulette = igs.service_call("Whiteboard", "addImageFromUrl", arg, "")
 
                 if id_roulette == -1:
                     continue
 
-                #arg = (id_roulette, "width",400 )
-                #igs.service_call("Whiteboard","setDoubleProperty", arg, "")
+                arg = (agent.roulette.getStringLastWinner(), 0.0, 10.0, "black")
+                igs.service_call("Whiteboard", "addText", arg, "")
 
-                #arg = (id_roulette, "height", 400)
-                #igs.service_call("Whiteboard", "setDoubleProperty", arg, "")
+                arg = (agent.roulette.getStringBigWinner(), 0.0, 50.0, "black")
+                igs.service_call("Whiteboard", "addText", arg, "")
+
+                # arg = (id_roulette, "width",400 )
+                # igs.service_call("Whiteboard","setDoubleProperty", arg, "")
+
+                # arg = (id_roulette, "height", 400)
+                # igs.service_call("Whiteboard", "setDoubleProperty", arg, "")
 
                 agent.roulette.etat = "MISAGE"
                 agent.titleO = "Faites vos jeux"
@@ -232,13 +265,13 @@ if __name__ == "__main__":
             if agent.roulette.etat == "MISAGE":
                 if agent.majTimerRoulette():
                     agent.titleO = "Les jeux sont faits"
-                    n=agent.roulette.lancerAnimationRoulette()
+                    n = agent.roulette.lancerAnimationRoulette()
                     agent.titleO = "Le numéro gagnant est " + str(n) + " !"
                     igs.service_call("Whiteboard", "chat", "Le numéro gagnant est le " + str(n), "")
                     agent.checkWinner()
                     time.sleep(3)
                     agent.titleO = "Faites vos jeux"
-                    agent.roulette.relancerPartie(20)
+                    agent.relancerPartie(20, id_textLastGagnant, id_textBigGagnant)
 
     if igs.is_started():
         igs.stop()

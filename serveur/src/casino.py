@@ -16,6 +16,12 @@ class Casino:
     def __init__(self, valTimer):
         self.timer = valTimer
 
+    def getStringLastWinner(self):
+        return "Dernier Gagnant : " + self.lastWinner['pseudo'] + " - " + str(self.lastWinner['gain'])
+
+    def getStringBigWinner(self):
+        return "Meilleur Gagnant : " + self.bigWinner['pseudo'] + " - " + str(self.bigWinner['gain'])
+
     def tirerUneCase(self):
         self.num = random.randint(0, 36)
         self.histo.append(self.num)
@@ -44,6 +50,7 @@ class Casino:
     def relancerPartie(self, valeur):
         self.etat = "MISAGE"
         self.timer = valeur
+        self.lastWinner = {'pseudo': "XXX", 'gain': 0}
         self.miseInGame.clear()
 
     def majTimerRoulette(self):

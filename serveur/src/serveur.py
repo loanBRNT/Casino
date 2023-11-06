@@ -51,7 +51,6 @@ class Serveur(metaclass=Singleton):
             return True
         if t % 5 == 0:
             s = "Prochain lancé dans " + str(t) + " secondes"
-            print(s)
             igs.service_call("Whiteboard", "chat", s, "")
         return False
 
@@ -61,8 +60,9 @@ class Serveur(metaclass=Singleton):
             print(g.toString())
             igs.service_call("Whiteboard", "chat", g.toString(), "")
 
-
-'''
-- Comment fixer la position des éléments sur le whiteboard
-- String ne s'update pas
-'''
+    def relancerPartie(self,valTimer,idLastWin,idBigWin):
+        igs.service_call("Whiteboard","setStringProperty",(idLastWin,"text",self.roulette.getStringLastWinner()),"")
+        #print((idLastWin,"text",self.roulette.getStringLastWinner()))
+        igs.service_call("Whiteboard", "setStringProperty", (idBigWin, "text", self.roulette.getStringBigWinner()),"")
+        #print((idBigWin, "text", self.roulette.getStringBigWinner()))
+        self.roulette.relancerPartie(valTimer)
