@@ -418,79 +418,26 @@
                     {
                         "commandLine": "C:\\Users\\eliot\\Documents\\ecole_inge\\3A\\ingenuity\\Whiteboard\\Whiteboard.exe",
                         "hostname": "DESKTOP-B6FRCN7",
-                        "ipAddress": "192.168.211.131"
+                        "ipAddress": "192.168.22.131"
+                    },
+                    {
+                        "commandLine": "C:\\Users\\eliot\\Documents\\ecole_inge\\3A\\ingenuity\\Whiteboard\\Whiteboard.exe --device Wi-Fi --port 5670",
+                        "hostname": "DESKTOP-B6FRCN7",
+                        "ipAddress": "192.168.22.131"
                     },
                     {
                         "commandLine": "C:\\Users\\loant\\Documents\\Whiteboard\\Whiteboard.exe --device Wi-Fi",
                         "hostname": "DELL-Loan-BERNAT",
-                        "ipAddress": "192.168.1.102",
+                        "ipAddress": "192.168.22.199",
                         "mac": "F0:9E:4A:B1:6F:CF"
                     }
                 ],
                 "view": {
                     "height": 40,
                     "isCollapsed": false,
-                    "positionX": 548,
-                    "positionY": 389,
-                    "positionZ": 1.5900000000000005,
-                    "width": 252
-                }
-            },
-            {
-                "data": {
-                },
-                "definition": {
-                    "description": "",
-                    "family": "",
-                    "inputs": [
-                    ],
-                    "isDynamic": false,
-                    "name": "Joueur",
-                    "outputs": [
-                    ],
-                    "parameters": [
-                    ],
-                    "services": [
-                        {
-                            "arguments": [
-                                {
-                                    "name": "succes",
-                                    "type": "BOOL"
-                                }
-                            ],
-                            "name": "Mise_effectuee"
-                        },
-                        {
-                            "arguments": [
-                                {
-                                    "name": "sommeGagnee",
-                                    "type": "DOUBLE"
-                                }
-                            ],
-                            "name": "Gain"
-                        }
-                    ],
-                    "version": "1.0"
-                },
-                "identity": "Joueur",
-                "instances": [
-                    {
-                        "commandLine": "C:\\Users\\eliot\\AppData\\Local\\Programs\\Python\\Python310\\python.exe C:\\Users\\eliot\\Documents\\ecole_inge\\3A\\Casino\\Joueur\\src\\main.py",
-                        "hostname": "DESKTOP-B6FRCN7",
-                        "ipAddress": "192.168.211.131"
-                    },
-                    {
-                        "commandLine": "C:\\Users\\eliot\\AppData\\Local\\Programs\\Python\\Python310\\python.exe C:\\Users\\eliot\\Documents\\ecole_inge\\3A\\Casino\\Joueur\\src\\main.py --device Wi-Fi",
-                        "hostname": "DESKTOP-B6FRCN7",
-                        "ipAddress": "192.168.211.131"
-                    }
-                ],
-                "view": {
-                    "height": 40,
-                    "isCollapsed": false,
-                    "positionX": 597,
-                    "positionY": 325,
-                    "positionZ": 1.6900000000000006,
+                    "positionX": 690,
+                    "positionY": 234,
+                    "positionZ": 2.089999999999999,
                     "width": 252
                 }
             },
@@ -526,6 +473,15 @@
                                 }
                             ],
                             "name": "Miser"
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "elementId",
+                                    "type": "INTEGER"
+                                }
+                            ],
+                            "name": "elementCreated"
                         }
                     ],
                     "version": "1.0"
@@ -535,7 +491,7 @@
                     {
                         "commandLine": "C:\\Users\\loant\\PycharmProjects\\CasinoVirtualEnv\\Scripts\\python.exe C:\\Users\\loant\\PycharmProjects\\Casino\\serveur\\src\\main.py --device Wi-Fi",
                         "hostname": "DELL-Loan-BERNAT",
-                        "ipAddress": "192.168.1.102",
+                        "ipAddress": "192.168.22.199",
                         "mac": "F0:9E:4A:B1:6F:CF"
                     }
                 ],
@@ -544,18 +500,74 @@
                     "isCollapsed": false,
                     "positionX": 230,
                     "positionY": 351,
-                    "positionZ": 1.7600000000000007,
+                    "positionZ": 2.05,
+                    "width": 252
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "",
+                    "inputs": [
+                    ],
+                    "isDynamic": false,
+                    "name": "Joueur",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                        {
+                            "arguments": [
+                                {
+                                    "name": "succes",
+                                    "type": "BOOL"
+                                }
+                            ],
+                            "name": "Mise_effectuee"
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "sommeGagnee",
+                                    "type": "DOUBLE"
+                                }
+                            ],
+                            "name": "Gain"
+                        },
+                        {
+                            "arguments": [
+                                {
+                                    "name": "base64Png",
+                                    "type": "DATA"
+                                }
+                            ],
+                            "name": "snapshotResult"
+                        }
+                    ],
+                    "version": "1.0"
+                },
+                "identity": "Joueur",
+                "instances": [
+                    {
+                        "commandLine": "C:\\Users\\eliot\\AppData\\Local\\Programs\\Python\\Python310\\python.exe C:\\Users\\eliot\\Documents\\ecole_inge\\3A\\Casino\\Casino\\Joueur\\src\\main.py --device Wi-Fi",
+                        "hostname": "DESKTOP-B6FRCN7",
+                        "ipAddress": "192.168.22.131"
+                    }
+                ],
+                "view": {
+                    "height": 40,
+                    "isCollapsed": false,
+                    "positionX": 680,
+                    "positionY": 459,
+                    "positionZ": 2.0699999999999994,
                     "width": 252
                 }
             }
         ],
         "mappings": [
-            {
-                "fromAgent": "ddb3aaaf-d5b7-4571-9765-ecf913e50d85",
-                "fromInput": "wildcard",
-                "toAgent": "Whiteboard",
-                "toOutput": "ui_error"
-            },
             {
                 "fromAgent": "Whiteboard",
                 "fromInput": "title",
@@ -609,7 +621,7 @@
                     "isCollapsed": true,
                     "positionX": 146,
                     "positionY": 91,
-                    "positionZ": 1.7700000000000007,
+                    "positionZ": 2.079999999999999,
                     "width": 246
                 }
             },
@@ -638,69 +650,18 @@
                 "view": {
                     "height": 304,
                     "isCollapsed": false,
-                    "positionX": 1018,
-                    "positionY": 58,
-                    "positionZ": 1.5700000000000005,
+                    "positionX": 1182,
+                    "positionY": 6,
+                    "positionZ": 2.1099999999999985,
                     "width": 499
                 }
             },
             {
                 "data": {
                     "arguments": [
-                        {
-                            "sommeGagnee": "20"
-                        }
-                    ],
-                    "selectedAgent": "Joueur",
-                    "selectedService": "Gain"
-                },
-                "definition": {
-                    "description": "",
-                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
-                    "inputs": [
-                        {
-                            "description": "",
-                            "name": "trigger",
-                            "type": "IMPULSION"
-                        }
-                    ],
-                    "isDynamic": false,
-                    "name": "",
-                    "outputs": [
-                    ],
-                    "parameters": [
-                    ],
-                    "services": [
-                    ],
-                    "version": ""
-                },
-                "identity": "7ad871ec-804f-46c0-80b8-a51ebb3593be",
-                "instances": [
-                ],
-                "view": {
-                    "height": 48,
-                    "isCollapsed": false,
-                    "positionX": 512,
-                    "positionY": 117,
-                    "positionZ": 1.4000000000000004,
-                    "width": 246
-                }
-            },
-            {
-                "data": {
-                    "arguments": [
-                        {
-                            "elementId": "0"
-                        },
-                        {
-                            "property": "text"
-                        },
-                        {
-                            "value": "test"
-                        }
                     ],
                     "selectedAgent": "Whiteboard",
-                    "selectedService": "setStringProperty"
+                    "selectedService": "snapshot"
                 },
                 "definition": {
                     "description": "",
@@ -730,21 +691,34 @@
                     "isCollapsed": false,
                     "positionX": 82,
                     "positionY": 492,
-                    "positionZ": 1.5800000000000005,
+                    "positionZ": 2.0999999999999988,
                     "width": 246
                 }
             },
             {
                 "data": {
+                    "arguments": [
+                        {
+                            "elementId": "1"
+                        },
+                        {
+                            "property": "text"
+                        },
+                        {
+                            "value": "\"test\""
+                        }
+                    ],
+                    "selectedAgent": "Whiteboard",
+                    "selectedService": "setStringProperty"
                 },
                 "definition": {
                     "description": "",
-                    "family": "7fc274c8-b06e-429b-9d09-d14878381016",
+                    "family": "7fc274c8-b06e-548p-9d09-d14878381016",
                     "inputs": [
                         {
                             "description": "",
-                            "name": "wildcard",
-                            "type": "WILDCARD_SINGLE_MAPPING"
+                            "name": "trigger",
+                            "type": "IMPULSION"
                         }
                     ],
                     "isDynamic": false,
@@ -757,16 +731,16 @@
                     ],
                     "version": ""
                 },
-                "identity": "ddb3aaaf-d5b7-4571-9765-ecf913e50d85",
+                "identity": "0b993d54-38c1-4862-a5c9-6627d403406b",
                 "instances": [
                 ],
                 "view": {
-                    "height": 46,
+                    "height": 48,
                     "isCollapsed": false,
-                    "positionX": 893.1712184873951,
-                    "positionY": 489.04989495798327,
-                    "positionZ": 1.7000000000000006,
-                    "width": 180
+                    "positionX": 536,
+                    "positionY": 656,
+                    "positionZ": 1.9100000000000008,
+                    "width": 246
                 }
             }
         ]

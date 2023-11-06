@@ -241,7 +241,7 @@ if __name__ == "__main__":
             if agent.roulette.etat == "ATTENTE":
                 igs.service_call("Whiteboard", "clear", None, "")
 
-                arg = ("https://raw.githubusercontent.com/loanBRNT/Casino/main/wheel.png", 0.0, 0.0)
+                arg = ("https://raw.githubusercontent.com/loanBRNT/Casino/main/wheel.png", 200.0, 200.0)
                 id_roulette = igs.service_call("Whiteboard", "addImageFromUrl", arg, "")
 
                 if id_roulette == -1:
@@ -272,6 +272,7 @@ if __name__ == "__main__":
                     time.sleep(3)
                     agent.titleO = "Faites vos jeux"
                     agent.relancerPartie(20, id_textLastGagnant, id_textBigGagnant)
+                    igs.service_call("Whiteboard","snapshot",(),"")
 
     if igs.is_started():
         igs.stop()

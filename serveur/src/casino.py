@@ -1,7 +1,7 @@
 import random
 import Mise
 import time
-
+from PIL import Image
 
 class Casino:
     num = None  # Num sorti
@@ -61,3 +61,25 @@ class Casino:
         self.etat = "EN COURS"
         time.sleep(3)  # Peut-être remplacer avec un Thread apres
         return self.tirerUneCase()
+
+'''
+from PIL import Image 
+  
+# Giving The Original image Directory  
+# Specified 
+Original_Image = Image.open("./gfgrotate.jpg") 
+  
+# Rotate Image By 180 Degree 
+rotated_image1 = Original_Image.rotate(180) 
+  
+# This is Alternative Syntax To Rotate  
+# The Image 
+rotated_image2 = Original_Image.transpose(Image.ROTATE_90) 
+  
+# This Will Rotate Image By 60 Degree 
+rotated_image3 = Original_Image.rotate(60) 
+  
+rotated_image1.show() 
+rotated_image2.show() 
+rotated_image3.show() 
+'''
