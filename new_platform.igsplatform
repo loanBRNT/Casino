@@ -428,16 +428,16 @@
                     {
                         "commandLine": "C:\\Users\\loant\\Documents\\Whiteboard\\Whiteboard.exe --device Wi-Fi",
                         "hostname": "DELL-Loan-BERNAT",
-                        "ipAddress": "192.168.22.199",
+                        "ipAddress": "192.168.1.102",
                         "mac": "F0:9E:4A:B1:6F:CF"
                     }
                 ],
                 "view": {
                     "height": 40,
                     "isCollapsed": false,
-                    "positionX": 690,
-                    "positionY": 234,
-                    "positionZ": 2.089999999999999,
+                    "positionX": 581,
+                    "positionY": 287,
+                    "positionZ": 2.139999999999998,
                     "width": 252
                 }
             },
@@ -491,16 +491,16 @@
                     {
                         "commandLine": "C:\\Users\\loant\\PycharmProjects\\CasinoVirtualEnv\\Scripts\\python.exe C:\\Users\\loant\\PycharmProjects\\Casino\\serveur\\src\\main.py --device Wi-Fi",
                         "hostname": "DELL-Loan-BERNAT",
-                        "ipAddress": "192.168.22.199",
+                        "ipAddress": "192.168.1.102",
                         "mac": "F0:9E:4A:B1:6F:CF"
                     }
                 ],
                 "view": {
                     "height": 40,
                     "isCollapsed": false,
-                    "positionX": 230,
-                    "positionY": 351,
-                    "positionZ": 2.05,
+                    "positionX": 257,
+                    "positionY": 321,
+                    "positionZ": 2.1599999999999975,
                     "width": 252
                 }
             },
@@ -650,9 +650,9 @@
                 "view": {
                     "height": 304,
                     "isCollapsed": false,
-                    "positionX": 1182,
-                    "positionY": 6,
-                    "positionZ": 2.1099999999999985,
+                    "positionX": 1007,
+                    "positionY": 29,
+                    "positionZ": 2.1499999999999977,
                     "width": 499
                 }
             },

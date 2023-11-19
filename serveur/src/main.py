@@ -15,6 +15,7 @@ import time
 from pathlib import Path
 import traceback
 import sys
+import base64
 
 from serveur import *
 
@@ -241,7 +242,12 @@ if __name__ == "__main__":
             if agent.roulette.etat == "ATTENTE":
                 igs.service_call("Whiteboard", "clear", None, "")
 
-                arg = ("https://raw.githubusercontent.com/loanBRNT/Casino/main/wheel.png", 200.0, 200.0)
+
+                with open('../../wheel.png', 'rb') as image_file:
+                    # Lire l'image et la convertir en base64
+                    encoded_string = base64.b64encode(image_file.read()).decode()
+
+                arg = ('https://raw.githubusercontent.com/loanBRNT/Casino/main/wheel.png', 200.0, 200.0)
                 id_roulette = igs.service_call("Whiteboard", "addImageFromUrl", arg, "")
 
                 if id_roulette == -1:

@@ -13,8 +13,11 @@ class Casino:
     lastWinner = {'pseudo': "XXX", 'gain': 0}  # Stocke les informations du dernier plus gros gagnant du coup
     bigWinner = {'pseudo': "XXX", 'gain': 0}  # Stocke les informations du plus gros gagnant de la session
 
+    roue = None # Variable vers l'image de la roue a afficher
+
     def __init__(self, valTimer):
         self.timer = valTimer
+        self.roue = Image.open("../../wheel.png")
 
     def getStringLastWinner(self):
         return "Dernier Gagnant : " + self.lastWinner['pseudo'] + " - " + str(self.lastWinner['gain'])
