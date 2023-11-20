@@ -20,6 +20,7 @@ import io
 import base64
 import os
 from Joueur import *
+
 port = 5670
 agent_name = "Joueur"
 device = None
@@ -47,6 +48,7 @@ def print_usage_help():
     print("	/quit : quits the agent")
     print("	/help : displays this message")
 
+
 def return_iop_value_type_as_str(value_type):
     if value_type == igs.INTEGER_T:
         return "Integer"
@@ -62,6 +64,7 @@ def return_iop_value_type_as_str(value_type):
         return "Data"
     else:
         return "Unknown"
+
 
 def return_event_type_as_str(event_type):
     if event_type == igs.PEER_ENTERED:
@@ -85,6 +88,7 @@ def return_event_type_as_str(event_type):
     else:
         return "UNKNOWN"
 
+
 def signal_handler(signal_received, frame):
     global is_interrupted
     print("\n", signal.strsignal(signal_received), sep="")
@@ -107,6 +111,7 @@ def on_freeze_callback(is_frozen, my_data):
         # add code here if needed
     except:
         print(traceback.format_exc())
+
 
 # services
 def Mise_effectuee_callback(sender_agent_name, sender_agent_uuid, service_name, tuple_args, token, my_data):
@@ -133,21 +138,21 @@ def snapshotResult_callback(sender_agent_name, sender_agent_uuid, service_name, 
     try:
         agent_object = my_data
         assert isinstance(agent_object, Joueur)
-        image =arguments[0]
+        image = arguments[0]
         agent_object.snapshotResult(sender_agent_name, sender_agent_uuid, image)
     except:
         print(traceback.format_exc())
 
-def select_zone(position):
 
-    x,y=position
-    if y <window_height-image_height+6 or x>image_width:
+def select_zone(position):
+    x, y = position
+    if y < window_height - image_height + 6 or x > image_width:
         return None
     else:
-        if y<window_height-image_height+225 and x <80: # cas du zero
-                return 0
+        if y < window_height - image_height + 225 and x < 80:  # cas du zero
+            return 0
         if y < window_height - image_height + 225:
-            if x>680:
+            if x > 680:
                 y = y - (window_height - image_height + 6)
                 if (y // 75) == 0:
                     return "tier1"
@@ -157,34 +162,34 @@ def select_zone(position):
                     return "tier3"
 
             else:
-                x=x-80
-                colonne= x//50
-                y=y-(window_height-image_height+6)
-                ligne= y//75 +1
-                ligne=abs(ligne-3)+1
-                return str(ligne+3*colonne)
+                x = x - 80
+                colonne = x // 50
+                y = y - (window_height - image_height + 6)
+                ligne = y // 75 + 1
+                ligne = abs(ligne - 3) + 1
+                return str(ligne + 3 * colonne)
 
-        elif y<window_height-image_height+275:
-            #cas des tiers colonnes
+        elif y < window_height - image_height + 275:
+            # cas des tiers colonnes
             if x < 80 or x > 680:
                 return None
             else:
-                x=x-80
-                if(x//200)==0:
+                x = x - 80
+                if (x // 200) == 0:
                     return "1-12"
-                elif(x//200)==1:
-                   return "13-24"
+                elif (x // 200) == 1:
+                    return "13-24"
                 else:
                     return "25-36"
         else:
-             #cas des pairs
-            if x<80 or x > 680 :
+            # cas des pairs
+            if x < 80 or x > 680:
                 return None
             else:
-                x=x-80
-                if(x//100)==0:
+                x = x - 80
+                if (x // 100) == 0:
                     return "1-18"
-                elif(x//100)==1:
+                elif (x // 100) == 1:
                     return "pair"
                 elif (x // 100) == 2:
                     return "rouge"
@@ -195,48 +200,65 @@ def select_zone(position):
                 else:
                     return "19-36"
 
+
 def select_montant_mise(position):
-    x,y=position
+    x, y = position
     y = y - (window_height - image_height + 6)
     if (y // 75) == 0:
+        agent.mise_selected = 5.0
         print("mise 5")
     elif (y // 75) == 1:
+        agent.mise_selected = 25.0
         print("mise 25")
-    elif (y//75)==2:
+    elif (y // 75) == 2:
+        agent.mise_selected = 50.0
         print("mise 50")
     else:
+        agent.mise_selected = 100.0
         print("mise 100")
 
 
-
-
-
 if __name__ == "__main__":
-    window_height=920
-    window_width=1080
+    window_height = 920
+    window_width = 1080
 
-
-    #creation fenetre
+    # creation fenetre
     pygame.init()
     screen = pygame.display.set_mode((window_width, window_height))
-    image_height=334
-    image_width=736
+    image_height = 334
+    image_width = 736
     image = pygame.image.load('../../tapis_roulette.png')
-    w=image_width+10
-    h=window_height-image_height
-    screen.blit(image, (0,window_height-image_height))
-    list_image=os.listdir("../../jetons")
+    w = image_width + 10
+    h = window_height - image_height
+    screen.blit(image, (0, window_height - image_height))
+    list_image = os.listdir("../../jetons")
     list_image.sort()
     for image in list_image:
-        pygame.draw.rect(screen,(0,0,0),(w,h,75,75))
-        image_path= os.path.join("../../jetons/",image)
+        pygame.draw.rect(screen, (0, 0, 0), (w, h, 75, 75))
+        image_path = os.path.join("../../jetons/", image)
         image_jeton = pygame.image.load(image_path)
-        screen.blit(image_jeton, (w,h))
-        h = h + image_jeton.get_height()+5
+        screen.blit(image_jeton, (w, h))
+        h = h + image_jeton.get_height() + 5
 
     clock = pygame.time.Clock()
     running = True
     dt = 0
+
+    # create a font object.
+    # 1st parameter is the font file
+    # which is present in pygame.
+    # 2nd parameter is size of the font
+    font = pygame.font.Font('freesansbold.ttf', 32)
+
+    # create a text surface object,
+    # on which text is drawn on it.
+    text = font.render('cagnotte', True, (0, 0, 0), (255, 255, 255))
+    # create a rectangular object for the
+    # text surface object
+    textRect = text.get_rect()
+
+    # set the center of the rectangular object.
+    textRect.center = (900,700)
 
     # catch SIGINT handler before starting agent
     signal.signal(signal.SIGINT, signal_handler)
@@ -283,7 +305,8 @@ if __name__ == "__main__":
                 device = list_devices[1]
             else:
                 device = list_devices[0]
-            print("using %s as de fault network device (this is the only one available that is not the loopback)" % str(device))
+            print("using %s as de fault network device (this is the only one available that is not the loopback)" % str(
+                device))
         else:
             if len(list_devices) == 0:
                 igs.error("No network device found: aborting.")
@@ -304,12 +327,14 @@ if __name__ == "__main__":
     igs.service_arg_add("Mise_effectuee", "succes", igs.BOOL_T)
     igs.service_init("Gain", Gain_callback, agent)
     igs.service_arg_add("Gain", "sommeGagnee", igs.DOUBLE_T)
-    igs.service_init("snapshotResult", snapshotResult_callback,agent)
+    igs.service_init("snapshotResult", snapshotResult_callback, agent)
     igs.service_arg_add("snapshotResult", "base64Png", igs.DATA_T)
 
     igs.start_with_device(device, port)
     # catch SIGINT handler after starting agent
     signal.signal(signal.SIGINT, signal_handler)
+
+
 
     if interactive_loop:
         print_usage_help()
@@ -327,24 +352,29 @@ if __name__ == "__main__":
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if pygame.mouse.get_pressed()[0]:
                         prev_mouse_pos = pygame.mouse.get_pos()
-                        x,y=prev_mouse_pos
-                        #si click tapis de mise
-                        if( y >window_height-image_height+6 and x<image_width):
-                            value=select_zone(prev_mouse_pos)
-                            #on envoie au serveur la mise
-                            igs.service_call("serveur", "Miser", (5.0,value), "")
+                        x, y = prev_mouse_pos
+                        # si click tapis de mise
+                        if (y > window_height - image_height + 6 and x < image_width):
+                            value = select_zone(prev_mouse_pos)
+                            # on envoie au serveur la mise
+                            if(agent.mise_selected<=agent.cagnotte):
+                                igs.service_call("serveur", "Miser", (agent.mise_selected, value), "")
+                            else:
+                                print("pas assez de sous")
 
-                        if( y >window_height-image_height+6 and x>image_width and x<image_width+80):
+                        if (y > window_height - image_height + 6 and x > image_width and x < image_width + 80):
                             select_montant_mise(prev_mouse_pos)
                 # fill the screen with a color to wipe away anything from last frame
-            igs.service_call("Whiteboard","snapshot",(),"")
-            if agent.current_image==None :
-                NoImage=True
+            igs.service_call("Whiteboard", "snapshot", (), "")
+            if agent.current_image == None:
+                NoImage = True
                 # print("Pas d'image du whiteboard")
             else:
                 output = io.BytesIO(base64.b64decode(agent.current_image))
                 image = pygame.image.load(output)
-
+                cagnotte=str(agent.cagnotte)
+                text = font.render("cagnotte:"+cagnotte, True, (255, 255,255), (0, 0, 0))
+                screen.blit(text, textRect)
                 screen.blit(image, (0, 0))
 
             #
@@ -354,12 +384,10 @@ if __name__ == "__main__":
 
             # flip() the display to put your work on screen
 
-
             # limits FPS to 60
             # dt is delta time in seconds since last frame, used for framerate-
             # independent physics.
-            #dt = clock.tick(60) / 1000
-
+            # dt = clock.tick(60) / 1000
 
     if igs.is_started():
         igs.stop()
