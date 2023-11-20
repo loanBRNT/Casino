@@ -29,15 +29,16 @@ class Joueur(metaclass=Singleton):
 
 
     def __init__(self):
-        self.cagnotte=20
+        self.cagnotte=100
         self.current_image=None
+        self.mise_selected=5.0
 
 
     # services
     def Mise_effectuee(self, sender_agent_name, sender_agent_uuid, succes):
-        print("chokbar")
+        if succes:
+            self.cagnotte-=self.mise_selected
         pass
-
 
 
     def Gain(self, sender_agent_name, sender_agent_uuid, sommeGagnee):
