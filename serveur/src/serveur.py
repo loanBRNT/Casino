@@ -42,14 +42,14 @@ class Serveur(metaclass=Singleton):
     # services
     def Miser(self, sender_agent_name, sender_agent_uuid, montant, cible):
         print(sender_agent_name, " a misé ", montant, " sur ", cible)
-        self.roulette.ajouterUneMise(sender_agent_name, montant, cible)
+        self.roulette.ajouterUneMise(sender_agent_name, sender_agent_uuid, montant, cible)
 
     def majTimerRoulette(self):
         t = self.roulette.majTimerRoulette()
         self.titleO = "Faites vos jeux : " + str(t)
         if t == 0:
             return True
-        if t % 5 == 0:
+        if t % 10 == 0:
             s = "Prochain lancé dans " + str(t) + " secondes"
             igs.service_call("Whiteboard", "chat", s, "")
         return False
@@ -58,7 +58,7 @@ class Serveur(metaclass=Singleton):
         gagnants = self.roulette.trouverGagnant()
         for g in gagnants:
             print(g.toString())
-            igs.service_call("Whiteboard", "chat", g.toString(), "")
+            igs.service_call(g.id, "Gain", g.montant, "")
 
     def relancerPartie(self,valTimer,idLastWin,idBigWin):
         igs.service_call("Whiteboard","setStringProperty",(idLastWin,"text",self.roulette.getStringLastWinner()),"")

@@ -30,8 +30,8 @@ class Casino:
         self.histo.append(self.num)
         return self.num
 
-    def ajouterUneMise(self, pseudo, montant, regle):
-        mise = Mise.Mise(pseudo, montant, regle)
+    def ajouterUneMise(self, pseudo, id, montant, regle):
+        mise = Mise.Mise(pseudo, id, montant, regle)
         self.miseInGame.append(mise)
 
     def trouverGagnant(self):

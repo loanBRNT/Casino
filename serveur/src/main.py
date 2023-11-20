@@ -121,9 +121,9 @@ def Miser_callback(sender_agent_name, sender_agent_uuid, service_name, tuple_arg
         montant = tuple_args[0]
         cible = tuple_args[1]
         agent_object.Miser(sender_agent_name, sender_agent_uuid, montant, cible)
-        s = sender_agent_name + " a misé " + str(montant) + " sur " + str(cible)
+        s = sender_agent_name + "/" + sender_agent_uuid + " a misé " + str(montant) + " sur " + str(cible)
         igs.service_call("Whiteboard", "chat", s, "")
-        igs.service_call(sender_agent_name, "Mise effectue", True, "")
+        igs.service_call(sender_agent_uuid, "Mise_effectuee", True, "")
     except:
         print(traceback.format_exc())
 

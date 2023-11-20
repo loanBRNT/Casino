@@ -418,17 +418,17 @@
                     {
                         "commandLine": "C:\\Users\\eliot\\Documents\\ecole_inge\\3A\\ingenuity\\Whiteboard\\Whiteboard.exe",
                         "hostname": "DESKTOP-B6FRCN7",
-                        "ipAddress": "192.168.22.131"
+                        "ipAddress": "192.168.203.131"
                     },
                     {
                         "commandLine": "C:\\Users\\eliot\\Documents\\ecole_inge\\3A\\ingenuity\\Whiteboard\\Whiteboard.exe --device Wi-Fi --port 5670",
                         "hostname": "DESKTOP-B6FRCN7",
-                        "ipAddress": "192.168.22.131"
+                        "ipAddress": "192.168.203.131"
                     },
                     {
                         "commandLine": "C:\\Users\\loant\\Documents\\Whiteboard\\Whiteboard.exe --device Wi-Fi",
                         "hostname": "DELL-Loan-BERNAT",
-                        "ipAddress": "192.168.1.102",
+                        "ipAddress": "192.168.203.199",
                         "mac": "F0:9E:4A:B1:6F:CF"
                     }
                 ],
@@ -437,7 +437,7 @@
                     "isCollapsed": false,
                     "positionX": 581,
                     "positionY": 287,
-                    "positionZ": 2.189999999999997,
+                    "positionZ": 2.229999999999996,
                     "width": 252
                 }
             },
@@ -491,7 +491,7 @@
                     {
                         "commandLine": "C:\\Users\\loant\\PycharmProjects\\CasinoVirtualEnv\\Scripts\\python.exe C:\\Users\\loant\\PycharmProjects\\Casino\\serveur\\src\\main.py --device Wi-Fi",
                         "hostname": "DELL-Loan-BERNAT",
-                        "ipAddress": "192.168.1.102",
+                        "ipAddress": "192.168.203.199",
                         "mac": "F0:9E:4A:B1:6F:CF"
                     }
                 ],
@@ -554,7 +554,13 @@
                     {
                         "commandLine": "C:\\Users\\eliot\\AppData\\Local\\Programs\\Python\\Python310\\python.exe C:\\Users\\eliot\\Documents\\ecole_inge\\3A\\Casino\\Casino\\Joueur\\src\\main.py --device Wi-Fi",
                         "hostname": "DESKTOP-B6FRCN7",
-                        "ipAddress": "192.168.22.131"
+                        "ipAddress": "192.168.203.131"
+                    },
+                    {
+                        "commandLine": "C:\\Users\\loant\\PycharmProjects\\CasinoVirtualEnv\\Scripts\\python.exe C:\\Users\\loant\\PycharmProjects\\Casino\\Joueur\\src\\main.py --device Wi-Fi",
+                        "hostname": "DELL-Loan-BERNAT",
+                        "ipAddress": "192.168.203.199",
+                        "mac": "F0:9E:4A:B1:6F:CF"
                     }
                 ],
                 "view": {
@@ -562,43 +568,7 @@
                     "isCollapsed": false,
                     "positionX": 680,
                     "positionY": 459,
-                    "positionZ": 2.0699999999999994,
-                    "width": 252
-                }
-            },
-            {
-                "data": {
-                },
-                "definition": {
-                    "description": "",
-                    "family": "27D9171748894A4C90D3573FD8289CF1",
-                    "inputs": [
-                    ],
-                    "isDynamic": false,
-                    "name": "igs",
-                    "outputs": [
-                    ],
-                    "parameters": [
-                    ],
-                    "services": [
-                    ],
-                    "version": "1.0"
-                },
-                "identity": "igs",
-                "instances": [
-                    {
-                        "commandLine": "\"C:\\Program Files\\Ingescape\\Ingescape Circle\\igs.exe\"",
-                        "hostname": "DELL-Loan-BERNAT",
-                        "ipAddress": "192.168.1.102",
-                        "mac": "F0:9E:4A:B1:6F:CF"
-                    }
-                ],
-                "view": {
-                    "height": 40,
-                    "isCollapsed": false,
-                    "positionX": 533,
-                    "positionY": 187,
-                    "positionZ": 2.179999999999997,
+                    "positionZ": 2.2399999999999958,
                     "width": 252
                 }
             }

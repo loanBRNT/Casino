@@ -6,9 +6,10 @@ class Mise:
     def toString(self):
         return self.pseudo + " a gagné " + str(self.montant)
 
-    def __init__(self, pseudo, montant, regle):
+    def __init__(self, pseudo, id, montant, regle):
         self.regle = {}
         self.pseudo = pseudo
+        self.id = id
         self.montant = montant
         print(regle)
         if regle == "rouge" or regle == "noir":
@@ -19,6 +20,8 @@ class Mise:
             self.regle['tranche'] = regle
         elif regle =="tier1" or regle =="tier2" or regle =="tier3":
             self.regle['tier'] = regle
+        elif regle == "1-18" or regle == "19-36":
+            self.regle['moitie'] = regle
         else:
             self.regle['numero'] = regle
 
@@ -53,6 +56,13 @@ class Mise:
                 return True
             if (num+2) % 3 == 0 and self.regle['tier'] == "tier3":
                 self.montant = self.montant * 3
+                return True
+        elif 'moitie' in self.regle:
+            if num < 19 and self.regle['moitie'] == "1-18":
+                self.montant = self.montant * 2
+                return True
+            if num > 18 and self.regle['moitie'] == "19-36":
+                self.montant = self.montant * 2
                 return True
         elif 'numero' in self.regle:
             try:
