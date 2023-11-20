@@ -1,0 +1,10 @@
+"Test serveur" "test de la mise" {
+serveur.Miser(20.0,"rouge")
+assert Mise_effectue from serveur
+}
+
+"Test joueur" "test du gain" {
+joueur.cagnotte = 0
+joueur.Gain(10)
+assert joueur.cagnotte == 10
+}

@@ -428,7 +428,7 @@
                     {
                         "commandLine": "C:\\Users\\loant\\Documents\\Whiteboard\\Whiteboard.exe --device Wi-Fi",
                         "hostname": "DELL-Loan-BERNAT",
-                        "ipAddress": "192.168.203.199",
+                        "ipAddress": "172.17.57.21",
                         "mac": "F0:9E:4A:B1:6F:CF"
                     }
                 ],
@@ -491,7 +491,7 @@
                     {
                         "commandLine": "C:\\Users\\loant\\PycharmProjects\\CasinoVirtualEnv\\Scripts\\python.exe C:\\Users\\loant\\PycharmProjects\\Casino\\serveur\\src\\main.py --device Wi-Fi",
                         "hostname": "DELL-Loan-BERNAT",
-                        "ipAddress": "192.168.203.199",
+                        "ipAddress": "172.17.57.21",
                         "mac": "F0:9E:4A:B1:6F:CF"
                     }
                 ],
@@ -559,7 +559,7 @@
                     {
                         "commandLine": "C:\\Users\\loant\\PycharmProjects\\CasinoVirtualEnv\\Scripts\\python.exe C:\\Users\\loant\\PycharmProjects\\Casino\\Joueur\\src\\main.py --device Wi-Fi",
                         "hostname": "DELL-Loan-BERNAT",
-                        "ipAddress": "192.168.203.199",
+                        "ipAddress": "172.17.57.21",
                         "mac": "F0:9E:4A:B1:6F:CF"
                     }
                 ],
