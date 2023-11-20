@@ -19,3 +19,12 @@ Voici également d'autres éléments que nous n'avons pas eu le temps d'impléme
 - Faire tourner la roue lors du tirage.
 
 Pensez à lancer la plateforme ingescape circle et à vérifier que la sortie de l'agent serveur est bien relié à l'entrée titre du Whiteboard. Ensuite, vous pouvez exécuter les agents.
+
+--
+
+##Comment jouer ?
+
+Il sera nécéssaire d'installer pygame. Vous pouvez lancez les deux agents dans n'importe quel ordre.
+Pour jouer, il vous suffit de sélectionner une mise sur la fenêtre joueur puis de cliquer à l'endroit où vous souhaitez déposer votre mise.
+
+Si votre mise est prise en compte, un message s'affiche sur le whiteboard et l'argent est débité de votre solde (visible en bas à gauche).
