@@ -437,7 +437,7 @@
                     "isCollapsed": false,
                     "positionX": 581,
                     "positionY": 287,
-                    "positionZ": 2.139999999999998,
+                    "positionZ": 2.189999999999997,
                     "width": 252
                 }
             },
@@ -500,7 +500,7 @@
                     "isCollapsed": false,
                     "positionX": 257,
                     "positionY": 321,
-                    "positionZ": 2.1599999999999975,
+                    "positionZ": 2.1999999999999966,
                     "width": 252
                 }
             },
@@ -563,6 +563,42 @@
                     "positionX": 680,
                     "positionY": 459,
                     "positionZ": 2.0699999999999994,
+                    "width": 252
+                }
+            },
+            {
+                "data": {
+                },
+                "definition": {
+                    "description": "",
+                    "family": "27D9171748894A4C90D3573FD8289CF1",
+                    "inputs": [
+                    ],
+                    "isDynamic": false,
+                    "name": "igs",
+                    "outputs": [
+                    ],
+                    "parameters": [
+                    ],
+                    "services": [
+                    ],
+                    "version": "1.0"
+                },
+                "identity": "igs",
+                "instances": [
+                    {
+                        "commandLine": "\"C:\\Program Files\\Ingescape\\Ingescape Circle\\igs.exe\"",
+                        "hostname": "DELL-Loan-BERNAT",
+                        "ipAddress": "192.168.1.102",
+                        "mac": "F0:9E:4A:B1:6F:CF"
+                    }
+                ],
+                "view": {
+                    "height": 40,
+                    "isCollapsed": false,
+                    "positionX": 533,
+                    "positionY": 187,
+                    "positionZ": 2.179999999999997,
                     "width": 252
                 }
             }
